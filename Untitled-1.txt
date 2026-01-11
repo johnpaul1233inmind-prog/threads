@@ -1,0 +1,59 @@
+
+calendar_to_occasion = {
+    "college class": "college",
+    "seminar": "college",
+    "exam": "college",
+    "college party": "party",
+    "birthday party": "party",
+    "interview": "interview",
+    "placement interview": "interview"
+}
+
+
+wardrobe = {
+    "college": {
+        "hot": ("Cotton top + Jeans + Sneakers",
+                "Light and comfortable for hot weather and college activities."),
+        "rainy": ("Dark top + Jeans + Closed shoes",
+                  "Dark colors and closed shoes are practical for rainy days."),
+        "cold": ("Full sleeve top + Jeans + Jacket",
+                 "Keeps you warm and suitable for college.")
+    },
+    "party": {
+        "hot": ("Stylish top + Skirt/Jeans",
+                "Trendy and comfortable for a party in warm weather."),
+        "rainy": ("Dark dress + Boots",
+                  "Dark outfits work better during rainy parties."),
+        "cold": ("Party outfit + Jacket",
+                 "Stylish and warm for cold weather parties.")
+    },
+    "interview": {
+        "hot": ("Formal shirt + Trousers",
+                "Professional look with light fabric for hot weather."),
+        "rainy": ("Dark formal shirt + Trousers",
+                  "Formal and suitable for rainy conditions."),
+        "cold": ("Formal shirt + Blazer",
+                 "Maintains professionalism and warmth.")
+    }
+}
+
+
+calendar_event = input("Enter today's calendar event: ").lower()
+weather = input("Enter weather (hot / rainy / cold): ").lower()
+
+
+if calendar_event in calendar_to_occasion:
+    occasion = calendar_to_occasion[calendar_event]
+else:
+    occasion = "college"  # default option
+
+
+if occasion in wardrobe and weather in wardrobe[occasion]:
+    outfit, reason = wardrobe[occasion][weather]
+    print("\n📅 Calendar Event:", calendar_event.title())
+    print("🎯 Occasion Identified:", occasion.title())
+    print("🌦 Weather:", weather.title())
+    print("\n👗 Suggested Outfit:", outfit)
+    print("💡 Reason:", reason)
+else:
+    print("\nSorry! No suitable outfit found.")
